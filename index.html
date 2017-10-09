@@ -13,16 +13,18 @@
     <div class="header">Random User</div>
     <div>
         <ul class="users-list">
-            <li class="user" ng-repeat="user in users">
+            <li class="user" ng-repeat="user in users track by $index">
                 <img class="user__image" ng-src={{user.picture.medium}} alt="{{user.name.first}} {{user.name.last}}"/>
                 <div class="user__name">{{user.name.first}} {{user.name.last}}</div>
                 <div class="user__email">{{user.email}}</div>
                 <div class="user__joined">Joined</div>
                 <div class="user__registered">{{user.registered}}</div>
+                <button ng-click="showDetails()">More Info</button>
+                <div ng-if="showInfo">{{user.phone}}</div>
             </li>
         </ul>
         <div class="load-more-wrapper">
-            <div class="load-more" ng-click="moreResults()">Load more</div>
+            <div class="load-more" ng-click="moreResults($index)">Load more</div>
         </div>
     </div>
 

@@ -6,6 +6,8 @@ angular.module('myModule', [])
 
 	$scope.users = [];
 
+	$scope.showInfo = false;
+
 	$scope.moreResults = function() {
 		page++;
 		callApi(page);
@@ -18,6 +20,7 @@ angular.module('myModule', [])
 			method: 'GET',
 			url: `https://randomuser.me/api/?page=${page}&results=12&seed=abc`
 		}).then(function(response) {
+			console.log(response.data.results);
 
 			if (page > 1) {
 				$scope.users = $scope.users.concat(response.data.results);
@@ -26,6 +29,10 @@ angular.module('myModule', [])
 			}
 
 		});
+	}
+
+	$scope.showDetails = function(index) {
+		$scope.showInfo = !$scope.showInfo;
 	}
 
 });
