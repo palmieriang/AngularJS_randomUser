@@ -19,12 +19,12 @@
                 <div class="user__email">{{user.email}}</div>
                 <div class="user__joined">Joined</div>
                 <div class="user__registered">{{user.registered}}</div>
-                <button ng-click="showDetails()">More Info</button>
-                <div ng-if="showInfo">{{user.phone}}</div>
+                <button ng-click="showDetails($index)">More Info</button>
+                <div ng-if="showInfo && $index === userIndex" class="user__registered">{{user.phone}}</div>
             </li>
         </ul>
         <div class="load-more-wrapper">
-            <div class="load-more" ng-click="moreResults($index)">Load more</div>
+            <div class="load-more" ng-click="moreResults()">Load more</div>
         </div>
     </div>
 

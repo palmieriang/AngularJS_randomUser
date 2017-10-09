@@ -13,7 +13,7 @@ angular.module('myModule', [])
 		callApi(page);
 	}
 
-	callApi();
+	callApi(1);
 
 	function callApi(page) {
 		return $http({
@@ -33,6 +33,7 @@ angular.module('myModule', [])
 
 	$scope.showDetails = function(index) {
 		$scope.showInfo = !$scope.showInfo;
+		$scope.userIndex = index;
 	}
 
 });
