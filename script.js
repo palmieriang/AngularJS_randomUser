@@ -20,7 +20,6 @@ angular.module('myModule', [])
 			method: 'GET',
 			url: `https://randomuser.me/api/?page=${page}&results=12&seed=abc`
 		}).then(function(response) {
-			console.log(response.data.results);
 
 			if (page > 1) {
 				$scope.users = $scope.users.concat(response.data.results);
@@ -32,8 +31,12 @@ angular.module('myModule', [])
 	}
 
 	$scope.showDetails = function(index) {
-		$scope.showInfo = !$scope.showInfo;
-		$scope.userIndex = index;
+		if ($scope.showInfo && $scope.userIndex === index) {
+			$scope.showInfo = false;
+		} else {
+			$scope.showInfo = true;
+			$scope.userIndex = index;
+		}
 	}
 
 });
